@@ -32,7 +32,7 @@ class Counters extends Component {
         console.log(this.state.counters);
         return (
             <div>
-                <button onClick={this.handleReset}>Reset</button>
+                <button className='btn btn-primary m-3' onClick={this.handleReset}>Reset</button>
                 {this.state.counters.map(counter =>
                     <Counter
                         key={counter.id}

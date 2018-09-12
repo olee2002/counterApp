@@ -7,7 +7,7 @@ class Counter extends Component {
         tags: ['tag1', 'tag2', 'tag3']
     };
     styles = {
-        fontSize: 50,
+        fontSize: 25,
         fontWeight: 'bold'
     }
 
@@ -15,19 +15,26 @@ class Counter extends Component {
         console.log(this.props.counter.value, this.state.value)
         this.setState({ value: this.state.value + 1 });
     }
-
+    handleDecrement = () => {
+        console.log(this.props.counter.value, this.state.value)
+        this.setState({ value: this.state.value - 1 });
+    }
 
 
     render() {
         console.log(this.props.counter)
         return (
-            <div>
-
-                <span
-                    style={this.styles}
-                    className={this.getBadgeClasses()}>{this.state.value}</span>
-                <button onClick={this.handleIncrement} className="btn btn-secondary btn-sm">Increment</button>
-                <button className='btn btn-danger m-2' onClick={() => this.props.onDelete(this.props.counter.id)}>Delete</button>
+            <div className="row">
+                <div className="col-1">
+                    <span
+                        style={this.styles}
+                        className={this.getBadgeClasses()}>{this.state.value}</span>
+                </div>
+                <div className="col">
+                    <button onClick={this.handleIncrement} className="btn btn-secondary">+</button>
+                    <button onClick={this.handleDecrement} className="btn btn-secondary m-2">-</button>
+                    <button className='btn btn-danger' onClick={() => this.props.onDelete(this.props.counter.id)}>X</button>
+                </div>
             </div>
         );
     }
